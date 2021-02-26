@@ -12,7 +12,7 @@ class Clock {
     }
 
     printTime() {
-        const string = `the time is: ${this.hours}:${this.minutes}:${this.seconds}!`
+        const string = `${this.hours}:${this.minutes}:${this.seconds}`
         const clockEl = document.getElementById("clock")
         htmlGenerator(string, clockEl);
     }

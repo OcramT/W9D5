@@ -37,12 +37,22 @@ attachDogLinks();
 
 const handleEnter = (e) => {
   const dogList = document.querySelector(".drop-down-dog-list")
-  debugger
   if (dogList.className === "drop-down-dog-list hidden") {
     dogList.className = "drop-down-dog-list";
+  // } else if (dogList.className === "drop-down-dog-list") {
+  //   dogList.className = "drop-down-dog-list hidden";
+  // }
   }
 }
 
-const dogHeader = document.querySelector("h3");
-dogHeader.addEventListener("click", handleEnter);
+const handleLeave = (e) => {
+  const dogList = document.querySelector(".drop-down-dog-list")
+  if (dogList.className === "drop-down-dog-list") {
+    dogList.className = "drop-down-dog-list hidden";
+  }
+}
+
+const dogHeader = document.querySelector(".drop-down-dog-nav");
+dogHeader.addEventListener("mouseenter", handleEnter);
+dogHeader.addEventListener("mouseleave", handleLeave);
 
