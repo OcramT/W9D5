@@ -1,8 +1,10 @@
-const TODO = [];
+const TODO = JSON.parse(localStorage.getItem('TODO')) || [];
+// debugger
 const TODOLIST = document.querySelector(".todos");
 const TODOFORM = document.querySelector(".add-todo-form"); 
 
 const addTodo = (e) => {
+  // debugger
   e.preventDefault();
   const todoInput = document.querySelector("input[name='add-todo']");
   const todoVal = todoInput.value;
@@ -12,11 +14,16 @@ const addTodo = (e) => {
     done: false 
   };
   TODO.push(todo);
-  populateList(TODO, TODOLIST);
+  populateList();
+  localStorage.setItem('TODO', JSON.stringify(TODO));
+  e.currentTarget.reset();
+  // debugger
 }
 
-const populateList = (todoArr, todoList) => {
-  todoArr.map(todo => {
+const populateList = () => {
+  // debugger
+  TODOLIST.innerHTML = "";
+  TODO.map(todo => {
     const label = document.createElement("label");
     label.htmlFor = `${todo.todoVal}`;
     label.innerHTML = `${todo.todoVal}`;
@@ -26,8 +33,14 @@ const populateList = (todoArr, todoList) => {
     label.appendChild(inputCheck);
     const li = document.createElement("li");
     li.appendChild(label);
-    todoList.appendChild(li);
+    TODOLIST.appendChild(li);
   })
 }
 
+const persistCheck = () => {
+  const checkbox = 
+  checked = "checked"
+}
+
 TODOFORM.addEventListener("submit", addTodo);
+TODOLIST.addEventListener("click", persistCheck)
